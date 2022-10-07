@@ -24,7 +24,6 @@ class AvaliadorTest {
 		
 		Double valorEsperado = 400.0;
 		assertEquals(valorEsperado, avaliador.getMaiorLance(), 0.0001);
-		//Assertions.assertEquals(valorEsperado, avaliador.getMaiorLance(), 0.0001);
 		
 		//criar a testaMaiorLanceComOrdem
 		
