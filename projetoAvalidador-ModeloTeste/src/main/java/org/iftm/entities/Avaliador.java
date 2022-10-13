@@ -6,7 +6,8 @@ public class Avaliador {
 		for(Lance lance : leilao.getLances()) {
 			if(lance.getValor() > maiorDeTodos) {
 				maiorDeTodos = lance.getValor();
-			}else if (lance.getValor() < maiorDeTodos) {
+			}
+			if (lance.getValor() < maiorDeTodos) {
 				menorDeTodos = lance.getValor();
 			}
 		}
