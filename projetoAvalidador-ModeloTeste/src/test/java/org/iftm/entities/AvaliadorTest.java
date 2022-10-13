@@ -6,12 +6,19 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class AvaliadorTest {
+	private Usuario joao;
+	private Usuario jose;
+	private Usuario maria;
+	
+	private Leilao leilao;
+	private Avaliador avaliador;
+	
 	
 	@BeforeEach
-	public void instanciarObjetos{
-		Usuario joao = new Usuario("Joao");
-		Usuario jose = new Usuario("Jose");
-		Usuario maria = new Usuario("Maria");
+	public void instanciarObjetos(){
+		joao = new Usuario("Joao");
+		jose = new Usuario("Jose");
+		maria = new Usuario("Maria");
 		
 		Leilao leilao = new Leilao("Playstation 3 novo");
 		Avaliador avaliador = new Avaliador();
