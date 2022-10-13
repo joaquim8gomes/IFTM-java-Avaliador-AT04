@@ -6,7 +6,17 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class AvaliadorTest {
-
+	
+	@BeforeEach
+	public void instanciarObjetos{
+		Usuario joao = new Usuario("Joao");
+		Usuario jose = new Usuario("Jose");
+		Usuario maria = new Usuario("Maria");
+		
+		Leilao leilao = new Leilao("Playstation 3 novo");
+		Avaliador avaliador = new Avaliador();
+	}
+	
 	@Test
 	public void testaMaiorLanceSemOrdem() {
 		Usuario joao = new Usuario("Joao");
@@ -44,6 +54,44 @@ class AvaliadorTest {
 		avaliador.avalia(leilao);
 		
 		Double valorEsperado = 200.0;
+		assertEquals(valorEsperado, avaliador.getMaiorLance(), 0.0001);
+	}
+	
+	@Test
+	public void testaMaiorLanceComOrdemCrescente() {
+		Usuario joao = new Usuario("Joaquim");
+		Usuario jose = new Usuario("Joselito");
+		Usuario maria = new Usuario("Marta");
+		
+		Leilao leilao = new Leilao("Playstation 4 novo");
+		Avaliador avaliador = new Avaliador();
+		
+		leilao.propoe(new Lance(joao, 300));
+		leilao.propoe(new Lance(jose, 400));
+		leilao.propoe(new Lance(maria, 500));
+		
+		avaliador.avalia(leilao);
+		
+		Double valorEsperado = 1200.0;
+		assertEquals(valorEsperado, avaliador.getMaiorLance(), 0.0001);
+	}
+	
+	@Test
+	public void testaMaiorLanceComOrdemDecrescente() {
+		Usuario joao = new Usuario("Joaquim");
+		Usuario jose = new Usuario("Joselito");
+		Usuario maria = new Usuario("Marta");
+		
+		Leilao leilao = new Leilao("Playstation 4 novo");
+		Avaliador avaliador = new Avaliador();
+		
+		leilao.propoe(new Lance(joao, 500));
+		leilao.propoe(new Lance(jose, 400));
+		leilao.propoe(new Lance(maria, 300));
+		
+		avaliador.avalia(leilao);
+		
+		Double valorEsperado = 1100.0;
 		assertEquals(valorEsperado, avaliador.getMaiorLance(), 0.0001);
 	}
 
