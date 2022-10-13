@@ -43,7 +43,7 @@ class AvaliadorTest {
 		
 		avaliador.avalia(leilao);
 		
-		Double valorEsperado = 400.0;
+		Double valorEsperado = 200.0;
 		assertEquals(valorEsperado, avaliador.getMaiorLance(), 0.0001);
 	}
 
