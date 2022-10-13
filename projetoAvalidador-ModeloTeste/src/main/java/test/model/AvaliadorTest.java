@@ -1,8 +1,12 @@
-package org.iftm.entities;
+package test.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.assertj.core.api.Assertions;
+import org.iftm.entities.Avaliador;
+import org.iftm.entities.Lance;
+import org.iftm.entities.Leilao;
+import org.iftm.entities.Usuario;
 import org.junit.jupiter.api.Test;
 
 class AvaliadorTest {
