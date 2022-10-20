@@ -1,4 +1,7 @@
 package org.iftm.entities;
+
+import test.model.List;
+
 public class Avaliador {
 	private double maiorDeTodos = Double.NEGATIVE_INFINITY;
 	private double menorDeTodos = Double.POSITIVE_INFINITY;
@@ -17,5 +20,9 @@ public class Avaliador {
 	}
 	public double getMenorLance() {
 		return maiorDeTodos;
+	}
+	public List<Lance> getTresMaiores() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

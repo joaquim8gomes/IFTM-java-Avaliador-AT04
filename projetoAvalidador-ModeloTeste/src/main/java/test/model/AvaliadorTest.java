@@ -2,6 +2,8 @@ package test.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.iftm.entities.Avaliador;
 import org.iftm.entities.Lance;
@@ -104,6 +106,49 @@ class AvaliadorTest {
 		
 		Double valorEsperado = 1100.0;
 		assertEquals(valorEsperado, avaliador.getMaiorLance(), 0.0001);
+	}
+	
+	@Test
+	public void testarMenorLancesOrdemCrescente2() {
+
+		Usuario joao = new Usuario("Joaquim");
+		Usuario jose = new Usuario("Joselito");
+		Usuario maria = new Usuario("Marta");
+		
+		leilao.propoe(new Lance(joao, 500));
+		leilao.propoe(new Lance(jose, 400));
+		leilao.propoe(new Lance(maria, 300));
+		
+		double resultadoEsperado = 250;
+
+		avaliador.avalia(leilao);
+
+		double resultadoObtido = avaliador.getMenorLance();
+		assertEquals(resultadoEsperado, resultadoObtido, 0.0001);
+	}
+	
+	@Test
+		public void testarMenorLancesUmLance() {
+
+		leilao.propoe(new Lance(joao,250.0));
+		double resultadoEsperado = 250;
+
+		avaliador.avalia(leilao);
+
+		double resultadoObtido = avaliador.getMenorLance();
+		assertEquals(resultadoEsperado, resultadoObtido, 0.0001);
+	}
+	
+	@Test
+		public void testarTresMaioresLancesOrdemCrescente() {
+		leilao.propoe(new Lance(joao, 100.0));
+		leilao.propoe(new Lance(jose, 200.0));
+		leilao.propoe(new Lance(maria, 300.0));
+		leilao.propoe(new Lance(joao, 400.0));
+		avaliador.avalia(leilao);
+		List<Lance> maiores = avaliador.getTresMaiores();
+		assertEquals(3, maiores.size());
+
 	}
 
 }
